@@ -4,19 +4,50 @@ import profile_img from '../../assets/profile_img.svg'
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 const Hero = () => {
-    const handleResumeDownload = () => {
+    const handleResumeDownload = async () => {
         try {
-            // Create a link element to trigger download
-            const link = document.createElement('a');
-            link.href = '/resume.pdf'; // Path to your resume file in public folder
-            link.download = 'Atin_Singha_Resume.pdf'; // Filename for download
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            // First try the fetch approach for better filename control
+            const response = await fetch('/resume.pdf');
+            if (response.ok) {
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
 
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'Atin_Singha_Resume.pdf';
+                link.setAttribute('download', 'Atin_Singha_Resume.pdf');
+                link.style.display = 'none';
+
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Clean up the blob URL
+                setTimeout(() => window.URL.revokeObjectURL(url), 100);
+            } else {
+                throw new Error('Resume file not found');
+            }
         } catch (error) {
-            alert('Sorry, there was an error downloading the resume. Please try again.');
+            console.error('Resume download error:', error);
+
+            // Fallback: Use direct link method
+            try {
+                const link = document.createElement('a');
+                link.href = '/resume.pdf';
+                link.download = 'Atin_Singha_Resume.pdf';
+                link.setAttribute('download', 'Atin_Singha_Resume.pdf');
+                link.target = '_blank';
+                link.style.display = 'none';
+
+                document.body.appendChild(link);
+                setTimeout(() => {
+                    link.click();
+                    document.body.removeChild(link);
+                }, 100);
+            } catch (fallbackError) {
+                // Final fallback: open in new tab
+                window.open('/resume.pdf', '_blank');
+            }
         }
     };
 
