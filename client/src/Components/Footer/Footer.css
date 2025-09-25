@@ -1,0 +1,229 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 20px;
+    color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    max-width: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.footer-text {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    background: linear-gradient(135deg, #DF8908 20%, #B415FF 70%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #DF8908 0%, #B415FF 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-link svg {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(180, 21, 255, 0.3);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.social-link:hover::before {
+    opacity: 1;
+}
+
+.social-link:hover svg {
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.copyright,
+.location {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    text-align: center;
+}
+
+.location {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer {
+        padding: 30px 15px;
+    }
+
+    .footer-content {
+        gap: 20px;
+    }
+
+    .footer-text {
+        font-size: 16px;
+    }
+
+    .social-links {
+        gap: 15px;
+    }
+
+    .social-link {
+        width: 45px;
+        height: 45px;
+    }
+
+    .footer-bottom {
+        margin-top: 15px;
+        padding-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 20px 10px;
+    }
+
+    .footer-content {
+        gap: 15px;
+    }
+
+    .footer-text {
+        font-size: 14px;
+        padding: 0 5px;
+    }
+
+    .social-links {
+        gap: 10px;
+    }
+
+    .social-link {
+        width: 40px;
+        height: 40px;
+    }
+
+    .footer-bottom {
+        margin-top: 10px;
+        padding-top: 15px;
+        gap: 5px;
+    }
+
+    .copyright,
+    .location {
+        font-size: 12px;
+    }
+
+    .location {
+        font-size: 13px;
+    }
+}
+
+/* Animation for footer entrance */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer-content>* {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.footer-text {
+    animation-delay: 0.1s;
+    animation-fill-mode: both;
+}
+
+.social-links {
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+}
+
+.footer-bottom {
+    animation-delay: 0.3s;
+    animation-fill-mode: both;
+}

@@ -1,0 +1,260 @@
+.education {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 80px;
+    margin: 80px 90px;
+}
+
+.education-title {
+    position: relative;
+}
+
+.education-title h1 {
+    padding: 0px 30px;
+    font-size: 60px;
+    font-weight: 600;
+}
+
+.education-title img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
+
+
+.experience-timeline {
+    position: relative;
+    padding: 20px;
+    color: #e2eaf0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.timeline-vertical-line {
+    position: absolute;
+    left: 40px;
+    top: 55px;
+    bottom: 48px;
+    width: 3px;
+    background: linear-gradient(180deg, #4ade80 0%, #22d3ee 100%);
+    z-index: -1;
+}
+
+.experience-card {
+    position: relative;
+    margin-bottom: 40px;
+    margin-left: 60px;
+    border: 1px solid #4a5568;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.experience-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(215, 208, 208, 0.4);
+    border-color: #ff00ff;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -49px;
+    top: 24px;
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(135deg, #4ade80 0%, #22d3ee 100%);
+    border-radius: 50%;
+    border: 3px solid #1a2332;
+    z-index: 1;
+    box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.2);
+}
+
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.company-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.position-info {
+    flex: 1;
+}
+
+.position-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 4px 0;
+    line-height: 1.2;
+}
+
+.company-duration {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.company-name {
+    color: #4ade80;
+    font-weight: 600;
+}
+
+.duration-separator {
+    margin-left: 14px;
+    margin-right: -2px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #718096;
+}
+
+.duration {
+    color: #a0aec0;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.data-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.data-list li {
+    color: #FFFFFF;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.data-list li strong {
+    color: #4ade80;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .experience-timeline {
+        padding: 16px;
+    }
+
+    .timeline-vertical-line {
+        left: -40px;
+    }
+
+    .experience-card {
+        margin-left: -5px;
+        margin-right: -55px;
+        padding: 20px;
+    }
+
+    .timeline-dot {
+        left: -59px;
+        width: 12px;
+        height: 12px;
+    }
+
+    .card-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .company-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .position-title {
+        font-size: 18px;
+    }
+
+    .data-list {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .education-title h1 {
+        padding: 0px 20px;
+        font-size: 48px;
+    }
+
+    .experience-card {
+        margin-left: -35px;
+        padding: 10px;
+        margin-right: -70px;
+    }
+
+    .timeline-vertical-line {
+        top: 44px;
+        left: -60px;
+    }
+
+    .timeline-dot {
+        left: -48px;
+        width: 10px;
+        height: 10px;
+    }
+
+    .position-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .duration-separator {
+        margin-left: 10px;
+        margin-right: 1px;
+        font-size: 20px;
+        font-weight: 700;
+    }
+}
+
+/* Animation for cards appearing */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.experience-card {
+    animation: slideInUp 0.6s ease-out;
+}
+
+.experience-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.experience-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
